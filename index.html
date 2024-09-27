@@ -1,141 +1,77 @@
 <!DOCTYPE html>
 <html>
-   	<head>
-      	<meta http-equiv="refresh" content="7200" />
-      	<meta name="viewport" content="width=device-width, initial-scale=1">
-      	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
-      	<title>comercial-blutrafos - Power Portal</title>
-      	<link rel="shortcut icon" href="https://www.powerportal.com.br/img/favicon.png"> 
-      	<style>
-	        * {
-	            box-sizing: border-box;
-	        }
-	        body {
-            	font-family: Verdana, sans-serif;
-            	height: 100%;
-            	overflow:hidden;
-            	background-color: #FFFFFF;
-	        }
-	        .mySlides {
-	            display: none;
-	        }
-	        iframe {
-	            vertical-align: center;
-	            width: 100%;
-	            height: 100vh;
-	        }
-	        .slideshow-container {  
-	            max-width: 1000%;
-	            width: 100%;
-	            height: 100%;
-	            position: relative;
-	            margin: auto;
-	            margin-top: -12px;
-	        }
-	        .text {  
-	            color: #f2f2f2;
-	            font-size: 15px;
-	            padding: 8px 12px;
-	            position: absolute;
-	            bottom: 8px;
-	            height: 100%; 
-	            width: 100%;
-	            text-align: center;
-	        }
-	        .numbertext {
-	            color: #f2f2f2; 
-	            font-size: 12px; 
-	            padding: 8px 12px; 
-	            position: absolute; 
-	            top: 0;
-	        }
-	        .dot { 
-	            height: 15px; 
-	            width: 15px; 
-	            margin: 0 2px; 
-	            background-color: #bbb; 
-	            border-radius: 50%; 
-	            display: inline-block; 
-	            transition: background-color 0.6s ease;
-	        }
-	        .active {  
-	            background-color: #717171; 
-	            height: 100%;
-	        }
+    <head>
+        <meta http-equiv="refresh" content="7200" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>comercial-blutrafos - Power Portal</title>
+        <link rel="shortcut icon" href="https://www.powerportal.com.br/img/favicon.png">
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                font-family: Verdana, sans-serif;
+                height: 100%;
+                overflow: hidden;
+                background-color: #FFFFFF;
+            }
+            .mySlides {
+                display: none;
+            }
+            iframe {
+                vertical-align: center;
+                width: 100%;
+                height: 100vh;
+            }
+            .slideshow-container {
+                max-width: 1000%;
+                width: 100%;
+                height: 100%;
+                position: relative;
+                margin: auto;
+                margin-top: -12px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="slideshow-container">
+            <iframe class="mySlides" id="slide0" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectionb6f283363566eccd644e" frameborder="0" allowFullScreen="true"></iframe>
+            <iframe class="mySlides" id="slide1" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection105c4019e48dc52a7222" frameborder="0" allowFullScreen="true"></iframe>
+            <iframe class="mySlides" id="slide2" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection1dc50c032a19a26803b4" frameborder="0" allowFullScreen="true"></iframe>
+            <iframe class="mySlides" id="slide3" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectione3cd9c1c09aa9410039d" frameborder="0" allowFullScreen="true"></iframe>
+        </div>
 
-	        @media only screen and (max-width: 100%) {
-	            .text {
-	               font-size: 11px;
-	            }
-	        }
-	        .ajuste{ 
-	            margin-top:-5;
-	            margin-left:-8px;
-	            width: 101% !important;
-	            height: 109vh !important;
-	        }
-			.none{
-				display: none;
-			}
-      	</style>
-   	</head>
-	<body>
-		<div class="slideshow-container ajuste">
-			<span class="none" id="link-publico-0">https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9</span>
-			<span class="none" id="link-servico-0">https://app.powerbi.com/groups/me/reports/6a6f4718-87bb-450e-8cab-7b9dc6ebdcbf/ReportSectionb6f283363566eccd644e?experience=power-bi</span>
-   			<iframe class="mySlides nenhum ajuste" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectionb6f283363566eccd644e" frameborder="0" allowFullScreen="true"></iframe>
-		
-			<span class="none" id="link-publico-1">https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9</span>
-			<span class="none" id="link-servico-1">https://app.powerbi.com/groups/me/reports/6a6f4718-87bb-450e-8cab-7b9dc6ebdcbf/ReportSection105c4019e48dc52a7222?experience=power-bi</span>
-   			<iframe class="mySlides nenhum ajuste" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection105c4019e48dc52a7222" frameborder="0" allowFullScreen="true"></iframe>
-		
-			<span class="none" id="link-publico-2">https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9</span>
-			<span class="none" id="link-servico-2">https://app.powerbi.com/groups/me/reports/6a6f4718-87bb-450e-8cab-7b9dc6ebdcbf/ReportSection1dc50c032a19a26803b4?experience=power-bi</span>
-   			<iframe class="mySlides nenhum ajuste" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection1dc50c032a19a26803b4" frameborder="0" allowFullScreen="true"></iframe>
-		
-			<span class="none" id="link-publico-3">https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9</span>
-			<span class="none" id="link-servico-3">https://app.powerbi.com/groups/me/reports/6a6f4718-87bb-450e-8cab-7b9dc6ebdcbf/ReportSectione3cd9c1c09aa9410039d?experience=power-bi</span>
-   			<iframe class="mySlides nenhum ajuste" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectione3cd9c1c09aa9410039d" frameborder="0" allowFullScreen="true"></iframe>
-		
-			<span class="none" id="link-publico-4">https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9</span>
-			<span class="none" id="link-servico-4">https://app.powerbi.com/groups/me/reports/6a6f4718-87bb-450e-8cab-7b9dc6ebdcbf/ReportSection57394120a9275e543e17?experience=power-bi</span>
-   			<iframe class="mySlides nenhum ajuste" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection57394120a9275e543e17" frameborder="0" allowFullScreen="true"></iframe>
-		
-			<span class="none" id="link-publico-6">https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9</span>
-			<span class="none" id="link-servico-6">https://app.powerbi.com/groups/me/reports/6a6f4718-87bb-450e-8cab-7b9dc6ebdcbf/ReportSectiond7929aa355a09b01c060?experience=power-bi</span>
-   			<iframe class="mySlides nenhum ajuste" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectiond7929aa355a09b01c060" frameborder="0" allowFullScreen="true"></iframe>
-		
-			<span class="none" id="link-publico-7">https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9</span>
-			<span class="none" id="link-servico-7">https://app.powerbi.com/groups/me/reports/6a6f4718-87bb-450e-8cab-7b9dc6ebdcbf/ReportSectioncf77169c1b4945a0897e?experience=power-bi</span>
-   			<iframe class="mySlides nenhum ajuste" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectioncf77169c1b4945a0897e" frameborder="0" allowFullScreen="true"></iframe>
-		<br>
-      	</div>
+        <script>
+            var slideIndex = 0;
+            var slide4Loaded = false; // Variável para saber se a página 4 foi recarregada
+            var links = document.getElementsByClassName("mySlides");
 
-	    <script>
-	        var slideIndex = 0;
+            function showSlides() {
+                for (var i = 0; i < links.length; i++) {
+                    links[i].style.display = "none";
+                }
 
-	        showSlides();
+                if (slideIndex >= links.length) {
+                    slideIndex = 0;
+                }
 
-	        function showSlides() {    
-	            var i;    
-	            var slides = document.getElementsByClassName("mySlides"); 
+                // Exibe o slide atual
+                links[slideIndex].style.display = "block";
 
-	            for (i = 0; i < slides.length; i++) {
-	               slides[i].style.display = "none";    
-	            }    
+                // Se for a página 4, recarrega ela para garantir que as matrizes carreguem
+                if (slideIndex === 3 && !slide4Loaded) {
+                    document.getElementById('slide3').src += ''; // Recarrega o iframe da página 4
+                    slide4Loaded = true;
+                }
 
-	            if (slideIndex >= slides.length) {
-	               slideIndex = 0;
-	            }    
+                var timeout = (slideIndex === 3) ? 50000 : 30000; // Mais tempo na página 4
 
-	            slides[slideIndex].style.display = "block";
+                setTimeout(showSlides, timeout);
+                slideIndex++;
+            }
 
-	            // 50s para o link 4, 30s para os outros
-	            var timeoutDuration = (slideIndex === 4) ? 50000 : 30000;
-
-	            setTimeout(showSlides, timeoutDuration);
-	            slideIndex++; 
-	        }
+            showSlides();
         </script>
     </body>
 </html>
