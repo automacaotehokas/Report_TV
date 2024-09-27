@@ -66,11 +66,19 @@
     function showLoadingScreen() {
         var iframes = document.querySelectorAll('iframe.none');
         var loadedCount = 0;
+        var maxWaitTime = 15000; // Tempo máximo para o carregamento (15 segundos)
+
+        // Função que remove a tela de carregamento após o tempo limite
+        var timeout = setTimeout(function() {
+            document.getElementById("loading-screen").style.display = "none";
+            startSlideshow();
+        }, maxWaitTime);
 
         iframes.forEach(function(iframe) {
             iframe.onload = function() {
                 loadedCount++;
                 if (loadedCount === iframes.length) {
+                    clearTimeout(timeout); // Limpar o timeout se todos os iframes carregarem
                     document.getElementById("loading-screen").style.display = "none"; // Esconder tela de carregamento
                     startSlideshow(); // Iniciar apresentação de slides após o carregamento
                 }
