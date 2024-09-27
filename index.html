@@ -18,10 +18,18 @@
             width: 100%;
             height: 100vh;
             border: none;
-            display: none;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.5s ease;
         }
         .active {
-            display: block;
+            opacity: 1;
+            z-index: 1;
+        }
+        .inactive {
+            z-index: 0;
         }
         .loading-screen {
             display: flex;
@@ -36,26 +44,27 @@
             font-size: 24px;
             font-weight: bold;
             color: #333;
+            z-index: 2;
         }
     </style>
 </head>
 <body>
 
 <!-- Tela de carregamento enquanto as páginas normais estão sendo carregadas -->
-<div id="loading-screen" class="loading-screen">Atualizando gráficos...</div>
+<div id="loading-screen" class="loading-screen">Atualizando dados...</div>
 
 <div class="slideshow-container">
     <!-- iframes para troca rápida -->
-    <iframe id="report-iframe-0" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectionb6f283363566eccd644e" class="none" allowFullScreen="true"></iframe>
-    <iframe id="report-iframe-1" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection105c4019e48dc52a7222" class="none" allowFullScreen="true"></iframe>
-    <iframe id="report-iframe-2" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection1dc50c032a19a26803b4" class="none" allowFullScreen="true"></iframe>
+    <iframe id="report-iframe-0" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectionb6f283363566eccd644e" class="inactive" allowFullScreen="true"></iframe>
+    <iframe id="report-iframe-1" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection105c4019e48dc52a7222" class="inactive" allowFullScreen="true"></iframe>
+    <iframe id="report-iframe-2" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection1dc50c032a19a26803b4" class="inactive" allowFullScreen="true"></iframe>
 
     <!-- iframe especial (matriz) -->
-    <iframe id="report-iframe-dynamic" class="none" allowFullScreen="true"></iframe>
+    <iframe id="report-iframe-dynamic" class="inactive" allowFullScreen="true"></iframe>
 
     <!-- iframes para troca rápida -->
-    <iframe id="report-iframe-3" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection9af8bc684709045ab008" class="none" allowFullScreen="true"></iframe>
-    <iframe id="report-iframe-4" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectiond7929aa355a09b01c060" class="none" allowFullScreen="true"></iframe>
+    <iframe id="report-iframe-3" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection9af8bc684709045ab008" class="inactive" allowFullScreen="true"></iframe>
+    <iframe id="report-iframe-4" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectiond7929aa355a09b01c060" class="inactive" allowFullScreen="true"></iframe>
 </div>
 
 <script>
@@ -64,7 +73,7 @@
 
     // Função para exibir a tela de carregamento enquanto os iframes normais estão sendo carregados
     function showLoadingScreen() {
-        var iframes = document.querySelectorAll('iframe.none');
+        var iframes = document.querySelectorAll('iframe.inactive');
         var loadedCount = 0;
         var maxWaitTime = 15000; // Tempo máximo para o carregamento (15 segundos)
 
@@ -89,10 +98,11 @@
     // Função para iniciar o slideshow
     function startSlideshow() {
         function showSlides() {
-            // Remover a classe "active" de todos os iframes
+            // Remover a classe "active" e "inactive" de todos os iframes e aplicar opacidade 0
             var iframes = document.querySelectorAll('iframe');
             iframes.forEach(function(iframe) {
                 iframe.classList.remove('active');
+                iframe.classList.add('inactive');
             });
 
             // Exibir as páginas de troca rápida
