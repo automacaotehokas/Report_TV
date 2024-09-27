@@ -40,7 +40,7 @@
 </head>
 <body>
 
-<div id="loading-screen" class="loading-screen">Atualizando dados...</div>
+<div id="loading-screen" class="loading-screen">Carregando páginas...</div>
 
 <div class="slideshow-container">
     <iframe id="report-iframe-0" allowFullScreen="true"></iframe>
@@ -83,7 +83,7 @@
                     // Continuar carregando o próximo iframe com um atraso para garantir renderização completa
                     setTimeout(function() {
                         loadIframe(index + 1);
-                    }, 5000); // Atraso de 5 segundos (ajuste conforme necessário)
+                    }, 10000); // Atraso de 10 segundos para cada matriz carregar completamente
                 }
             };
         }
@@ -97,7 +97,7 @@
             }
             document.getElementById("report-iframe-" + slideIndex).style.display = "block";
             slideIndex = (slideIndex + 1) % totalSlides;
-            setTimeout(showSlides, 5000);
+            setTimeout(showSlides, 30000);
         }
         showSlides();
     }
