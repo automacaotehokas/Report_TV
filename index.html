@@ -40,7 +40,7 @@
 </head>
 <body>
 
-<div id="loading-screen" class="loading-screen">Carregando páginas...</div>
+<div id="loading-screen" class="loading-screen">Atualizando dados...</div>
 
 <div class="slideshow-container">
     <iframe id="report-iframe-0" allowFullScreen="true"></iframe>
@@ -68,7 +68,7 @@
         "https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectioncf77169c1b4945a0897e"
     ];
 
-    // Função para carregar os iframes um por vez
+    // Função para carregar os iframes um por vez, com atraso
     function loadIframe(index) {
         if (index < totalSlides) {
             var iframe = document.getElementById("report-iframe-" + index);
@@ -80,8 +80,10 @@
                     document.getElementById("report-iframe-0").style.display = "block";  // Mostrar o primeiro iframe
                     startSlideShow();
                 } else {
-                    // Continuar carregando o próximo iframe
-                    loadIframe(index + 1);
+                    // Continuar carregando o próximo iframe com um atraso para garantir renderização completa
+                    setTimeout(function() {
+                        loadIframe(index + 1);
+                    }, 5000); // Atraso de 5 segundos (ajuste conforme necessário)
                 }
             };
         }
