@@ -1,81 +1,87 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="refresh" content="7200" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
-        <title>comercial-blutrafos - Power Portal</title>
-        <link rel="shortcut icon" href="https://www.powerportal.com.br/img/favicon.png"> 
-        <style>
-            * {
-                box-sizing: border-box;
-            }
-            body {
-                font-family: Verdana, sans-serif;
-                height: 100%;
-                overflow: hidden;
-                background-color: #FFFFFF;
-            }
-            .mySlides {
-                display: none;
-            }
-            iframe {
-                vertical-align: center;
-                width: 100%;
-                height: 100vh;
-            }
-            .slideshow-container {  
-                max-width: 100%;
-                width: 100%;
-                height: 100%;
-                position: relative;
-                margin: auto;
-                margin-top: -12px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="slideshow-container">
-            <!-- Páginas rápidas -->
-            <iframe class="mySlides" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectionb6f283363566eccd644e" frameborder="0" allowFullScreen="true"></iframe>
-            <iframe class="mySlides" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection105c4019e48dc52a7222" frameborder="0" allowFullScreen="true"></iframe>
-            <iframe class="mySlides" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection1dc50c032a19a26803b4" frameborder="0" allowFullScreen="true"></iframe>
-            
-            <!-- Página especial (matriz) -->
-            <iframe id="matriz" class="mySlides" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectione3cd9c1c09aa9410039d" frameborder="0" allowFullScreen="true"></iframe>
-            
-            <!-- Páginas rápidas -->
-            <iframe class="mySlides" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection9af8bc684709045ab008" frameborder="0" allowFullScreen="true"></iframe>
-            <iframe class="mySlides" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectiond7929aa355a09b01c060" frameborder="0" allowFullScreen="true"></iframe>
-        </div>
+<head>
+    <meta http-equiv="refresh" content="7200" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>comercial-blutrafos - Power Portal</title>
+    <link rel="shortcut icon" href="https://www.powerportal.com.br/img/favicon.png">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Verdana, sans-serif;
+            height: 100%;
+            overflow: hidden;
+            background-color: #FFFFFF;
+        }
+        .mySlides {
+            display: none;
+        }
+        iframe {
+            vertical-align: center;
+            width: 100%;
+            height: 100vh;
+        }
+        .slideshow-container {
+            max-width: 1000%;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            margin: auto;
+            margin-top: -12px;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
 
-        <script>
-            var slideIndex = 0;
-            var slides = document.getElementsByClassName("mySlides");
-            var matrizIframe = document.getElementById("matriz");
+<div class="slideshow-container">
+    <!-- Páginas rápidas -->
+    <iframe class="mySlides active" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectionb6f283363566eccd644e" frameborder="0" allowFullScreen="true"></iframe>
+    <iframe class="mySlides" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection105c4019e48dc52a7222" frameborder="0" allowFullScreen="true"></iframe>
+    <iframe class="mySlides" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection1dc50c032a19a26803b4" frameborder="0" allowFullScreen="true"></iframe>
+    
+    <!-- Página especial (matriz) -->
+    <iframe id="matriz" class="mySlides" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectione3cd9c1c09aa9410039d" frameborder="0" allowFullScreen="true"></iframe>
+    
+    <!-- Páginas rápidas -->
+    <iframe class="mySlides" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection9af8bc684709045ab008" frameborder="0" allowFullScreen="true"></iframe>
+    <iframe class="mySlides" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectiond7929aa355a09b01c060" frameborder="0" allowFullScreen="true"></iframe>
+</div>
 
-            function showSlides() {
-                for (var i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
-                }
+<script>
+    var slideIndex = 0;
+    var slides = document.getElementsByClassName("mySlides");
+    var matrizIframe = document.getElementById("matriz");
 
-                // Exibir a matriz com um tempo maior de 50 segundos
-                if (slideIndex === 3) {
-                    matrizIframe.src = matrizIframe.src;  // Forçar o recarregamento da página matriz
-                    slides[slideIndex].style.display = "block";
-                    setTimeout(showSlides, 50000);
-                } else {
-                    slides[slideIndex].style.display = "block";
-                    setTimeout(showSlides, 30000);
-                }
+    function showSlides() {
+        // Ocultar todas as páginas
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
 
-                slideIndex++;
-                if (slideIndex >= slides.length) {
-                    slideIndex = 0;
-                }
-            }
+        // Verificar se a matriz está sendo exibida
+        if (slideIndex === 3) {
+            matrizIframe.src = matrizIframe.src;  // Forçar o recarregamento da matriz
+            slides[slideIndex].style.display = "block";
+            setTimeout(showSlides, 50000); // Exibir a matriz por 50 segundos
+        } else {
+            slides[slideIndex].style.display = "block";
+            setTimeout(showSlides, 30000); // Exibir as outras páginas por 30 segundos
+        }
 
-            showSlides();
-        </script>
-    </body>
+        slideIndex++;
+        if (slideIndex >= slides.length) {
+            slideIndex = 0;
+        }
+    }
+
+    showSlides();
+</script>
+
+</body>
 </html>
