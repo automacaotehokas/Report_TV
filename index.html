@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="refresh" content="7200" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>comercial-blutrafos - Power Portal</title>
@@ -19,25 +18,16 @@
             height: 100vh;
             border: none;
         }
-        .slideshow-container {
-            width: 100%;
-            height: 100vh;
-            position: relative;
-        }
-        .none {
-            display: none;
-        }
     </style>
 </head>
 <body>
 
 <div class="slideshow-container">
-    <iframe id="report-iframe" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectionb6f283363566eccd644e" allowFullScreen="true"></iframe>
+    <iframe id="report-iframe" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9" allowFullScreen="true"></iframe>
 </div>
 
 <script>
     var slideIndex = 0;
-    var baseURL = "https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9";
     var pageNames = [
         "ReportSectionb6f283363566eccd644e",
         "ReportSection105c4019e48dc52a7222",
@@ -51,8 +41,17 @@
 
     function showSlides() {
         var iframe = document.getElementById("report-iframe");
+        var reportWindow = iframe.contentWindow;
+        
+        var message = {
+            action: "loadPage",
+            reportId: "your-report-id",  // Coloque o ID do seu relatório Power BI aqui
+            pageName: pageNames[slideIndex]
+        };
+        
+        reportWindow.postMessage(message, "*");
+        
         slideIndex = (slideIndex + 1) % pageNames.length;
-        iframe.src = baseURL + "&pageName=" + pageNames[slideIndex];
         setTimeout(showSlides, 30000);
     }
 
