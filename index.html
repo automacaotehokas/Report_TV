@@ -76,7 +76,7 @@
         if (slideIndex === 3) {
             dynamicIframe.src = dynamicLink;
             dynamicIframe.classList.add('active');
-            setTimeout(showSlides, 50000); // Exibição especial: 50 segundos
+            setTimeout(showSlides, 1000); // Exibição especial: 50 segundos
         } else {
             document.getElementById('report-iframe-' + (slideIndex < 3 ? slideIndex : slideIndex - 1)).classList.add('active');
             setTimeout(showSlides, 30000); // Troca rápida: 30 segundos
