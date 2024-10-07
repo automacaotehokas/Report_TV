@@ -18,23 +18,12 @@
             width: 100%;
             height: 100vh;
             border: none;
-            display: none;
-        }
-        .active {
-            display: block;
         }
     </style>
 </head>
 <body>
 
-<!-- Criação de iframes para pré-carregar todas as páginas -->
-<iframe id="report-iframe-0" allowFullScreen="true"></iframe>
-<iframe id="report-iframe-1" allowFullScreen="true"></iframe>
-<iframe id="report-iframe-2" allowFullScreen="true"></iframe>
-<iframe id="report-iframe-3" allowFullScreen="true"></iframe>
-<iframe id="report-iframe-4" allowFullScreen="true"></iframe>
-<iframe id="report-iframe-5" allowFullScreen="true"></iframe>
-<iframe id="report-iframe-6" allowFullScreen="true"></iframe>
+<iframe id="report-iframe" src="" allowFullScreen="true"></iframe>
 
 <script>
     var slideIndex = 0;
@@ -48,31 +37,15 @@
         "https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectioncf77169c1b4945a0897e"
     ];
 
-    // Função para pré-carregar os iframes
-    function preloadIframes() {
-        links.forEach(function(link, index) {
-            var iframe = document.getElementById('report-iframe-' + index);
-            iframe.src = link;
-        });
-    }
-
-    // Função para alternar entre os iframes carregados
     function showSlides() {
-        var iframes = document.querySelectorAll('iframe');
-
-        // Ocultar todos os iframes
-        iframes.forEach(function(iframe) {
-            iframe.classList.remove('active');
-        });
-
-        // Mostrar o iframe atual
-        iframes[slideIndex].classList.add('active');
-        slideIndex = (slideIndex + 1) % iframes.length;
-        setTimeout(showSlides, 50000); // Alterna a cada 30 segundos
+        var iframe = document.getElementById("report-iframe");
+        iframe.src = links[slideIndex];
+        slideIndex = (slideIndex + 1) % links.length;
+        // Aumentar o tempo para 60 segundos para dar mais tempo para carregamento
+        setTimeout(showSlides, 60000); 
     }
 
-    // Pré-carrega os iframes e inicia a apresentação de slides
-    preloadIframes();
+    // Inicia a apresentação de slides
     showSlides();
 </script>
 
