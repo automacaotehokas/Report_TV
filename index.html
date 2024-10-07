@@ -45,49 +45,43 @@
 <div id="loading-screen" class="loading-screen">Atualizando dados...</div>
 
 <div class="slideshow-container">
-    <!-- Páginas rápidas que não precisam ser recarregadas -->
     <iframe id="report-iframe-0" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectionb6f283363566eccd644e" class="active" allowFullScreen="true"></iframe>
     <iframe id="report-iframe-1" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection105c4019e48dc52a7222" allowFullScreen="true"></iframe>
     <iframe id="report-iframe-2" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection1dc50c032a19a26803b4" allowFullScreen="true"></iframe>
-
-    <!-- iframe especial (matriz) que precisa ser recarregado -->
-    <iframe id="report-iframe-dynamic" style="display: none;" allowFullScreen="true"></iframe>
-
-    <!-- Páginas rápidas que não precisam ser recarregadas -->
-    <iframe id="report-iframe-3" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection9af8bc684709045ab008" allowFullScreen="true"></iframe>
-    <iframe id="report-iframe-4" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectiond7929aa355a09b01c060" allowFullScreen="true"></iframe>
+    <iframe id="report-iframe-3" allowFullScreen="true"></iframe>
+    <iframe id="report-iframe-4" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection9af8bc684709045ab008" allowFullScreen="true"></iframe>
 </div>
 
 <script>
     var slideIndex = 0;
+    var dynamicIframe = document.getElementById("report-iframe-3");
     var dynamicLink = "https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectione3cd9c1c09aa9410039d";
-    var dynamicIframe = document.getElementById("report-iframe-dynamic");
 
-    // Função para alternar entre os iframes pré-carregados (sem recarregar)
+    // Função para alternar entre os iframes
     function showSlides() {
         var iframes = document.querySelectorAll('iframe');
-        
+
         // Ocultar todos os iframes
         iframes.forEach(function(iframe) {
             iframe.classList.remove('active');
         });
 
-        // Controlar se estamos na página especial que precisa recarregar
+        // Verificar se estamos na página que precisa de mais tempo para carregar
         if (slideIndex === 3) {
             dynamicIframe.src = dynamicLink;
             dynamicIframe.classList.add('active');
-            setTimeout(showSlides, 1000); // Exibição especial: 50 segundos
+            setTimeout(showSlides, 50000); // 50 segundos para a matriz
         } else {
-            document.getElementById('report-iframe-' + (slideIndex < 3 ? slideIndex : slideIndex - 1)).classList.add('active');
-            setTimeout(showSlides, 30000); // Troca rápida: 30 segundos
+            document.getElementById('report-iframe-' + slideIndex).classList.add('active');
+            setTimeout(showSlides, 30000); // 30 segundos para as páginas rápidas
         }
 
-        slideIndex = (slideIndex + 1) % 6;
+        slideIndex = (slideIndex + 1) % iframes.length;
     }
 
-    // Função para ocultar a tela de carregamento quando os iframes rápidos carregarem
+    // Função para ocultar a tela de carregamento quando os iframes forem carregados
     function hideLoadingScreen() {
-        var iframes = document.querySelectorAll('iframe:not(#report-iframe-dynamic)');
+        var iframes = document.querySelectorAll('iframe:not(#report-iframe-3)');
         var loadedCount = 0;
 
         // Monitorar quando todos os iframes forem carregados
@@ -101,12 +95,6 @@
             };
         });
     }
-
-    // Pré-carregar o iframe especial e iniciar as verificações
-    dynamicIframe.src = dynamicLink;
-    dynamicIframe.onload = function() {
-        console.log("Dynamic iframe carregado.");
-    };
 
     hideLoadingScreen();
 </script>
