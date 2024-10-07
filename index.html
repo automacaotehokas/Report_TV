@@ -18,88 +18,34 @@
             width: 100%;
             height: 100vh;
             border: none;
-            display: none;
-        }
-        .active {
-            display: block;
-        }
-        .loading-screen {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: white;
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            z-index: 1000;
         }
     </style>
 </head>
 <body>
 
-<!-- Tela de carregamento enquanto as páginas estão sendo carregadas -->
-<div id="loading-screen" class="loading-screen">Atualizando dados...</div>
-
-<div class="slideshow-container">
-    <iframe id="report-iframe-0" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectionb6f283363566eccd644e" class="active" allowFullScreen="true"></iframe>
-    <iframe id="report-iframe-1" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection105c4019e48dc52a7222" allowFullScreen="true"></iframe>
-    <iframe id="report-iframe-2" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection1dc50c032a19a26803b4" allowFullScreen="true"></iframe>
-    <iframe id="report-iframe-dynamic" allowFullScreen="true"></iframe>
-    <iframe id="report-iframe-3" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection9af8bc684709045ab008" allowFullScreen="true"></iframe>
-</div>
+<iframe id="report-iframe" src="" allowFullScreen="true"></iframe>
 
 <script>
     var slideIndex = 0;
-    var dynamicIframe = document.getElementById("report-iframe-dynamic");
-    var dynamicLink = "https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectione3cd9c1c09aa9410039d";
+    var links = [
+        "https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectionb6f283363566eccd644e",
+        "https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection105c4019e48dc52a7222",
+        "https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection1dc50c032a19a26803b4",
+        "https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectione3cd9c1c09aa9410039d",
+        "https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection9af8bc684709045ab008",
+        "https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectiond7929aa355a09b01c060",
+        "https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectioncf77169c1b4945a0897e"
+    ];
 
-    // Função para alternar entre os iframes
     function showSlides() {
-        var iframes = document.querySelectorAll('iframe');
-
-        // Ocultar todos os iframes
-        iframes.forEach(function(iframe) {
-            iframe.classList.remove('active');
-        });
-
-        // Se estamos no slide especial (matriz)
-        if (slideIndex === 3) {
-            dynamicIframe.src = dynamicLink;
-            dynamicIframe.onload = function() {
-                dynamicIframe.classList.add('active');
-                setTimeout(showSlides, 50000); // 50 segundos para a matriz
-            };
-        } else {
-            document.getElementById('report-iframe-' + (slideIndex < 3 ? slideIndex : slideIndex - 1)).classList.add('active');
-            setTimeout(showSlides, 30000); // 30 segundos para as páginas rápidas
-        }
-
-        slideIndex = (slideIndex + 1) % iframes.length;
+        var iframe = document.getElementById("report-iframe");
+        iframe.src = links[slideIndex];
+        slideIndex = (slideIndex + 1) % links.length;
+        setTimeout(showSlides, 30000); // Alterna a cada 30 segundos
     }
 
-    // Função para ocultar a tela de carregamento quando todos os iframes forem carregados
-    function hideLoadingScreen() {
-        var iframes = document.querySelectorAll('iframe:not(#report-iframe-dynamic)');
-        var loadedCount = 0;
-
-        // Monitorar quando todos os iframes forem carregados
-        iframes.forEach(function(iframe) {
-            iframe.onload = function() {
-                loadedCount++;
-                if (loadedCount === iframes.length) {
-                    document.getElementById("loading-screen").style.display = "none"; // Esconder tela de carregamento
-                    showSlides(); // Iniciar apresentação de slides
-                }
-            };
-        });
-    }
-
-    hideLoadingScreen();
+    // Inicia a apresentação de slides
+    showSlides();
 </script>
 
 </body>
