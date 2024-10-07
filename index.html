@@ -19,10 +19,7 @@
             width: 100%;
             height: 100vh;
             border: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: none; /* Mantém todos os iFrames invisíveis inicialmente */
+            display: none; /* Inicialmente oculto */
         }
         .active {
             display: block; /* Mostra apenas o iframe ativo */
@@ -31,14 +28,7 @@
 </head>
 <body>
 
-<!-- Criando iframes para todos os links -->
-<iframe id="report-iframe-0" class="active" allowFullScreen="true"></iframe>
-<iframe id="report-iframe-1" allowFullScreen="true"></iframe>
-<iframe id="report-iframe-2" allowFullScreen="true"></iframe>
-<iframe id="report-iframe-3" allowFullScreen="true"></iframe>
-<iframe id="report-iframe-4" allowFullScreen="true"></iframe>
-<iframe id="report-iframe-5" allowFullScreen="true"></iframe>
-<iframe id="report-iframe-6" allowFullScreen="true"></iframe>
+<iframe id="report-iframe" class="active" allowFullScreen="true"></iframe>
 
 <script>
     var slideIndex = 0;
@@ -52,25 +42,14 @@
         "https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectioncf77169c1b4945a0897e"
     ];
 
-    // Pré-carrega todos os iframes
-    links.forEach(function(link, index) {
-        var iframe = document.getElementById("report-iframe-" + index);
-        iframe.src = link;
-    });
-
     function showSlides() {
-        var iframes = document.querySelectorAll("iframe");
+        var iframe = document.getElementById("report-iframe");
+        iframe.src = links[slideIndex];
         
-        // Esconde todos os iframes
-        iframes.forEach(function(iframe) {
-            iframe.classList.remove('active');
-        });
-
-        // Mostra o iframe atual
-        document.getElementById("report-iframe-" + slideIndex).classList.add('active');
-
+        // Aumentando o tempo entre slides para dar mais tempo de carregamento e liberação de memória
+        setTimeout(showSlides, 120000); // Troca a cada 2 minutos
+        
         slideIndex = (slideIndex + 1) % links.length;
-        setTimeout(showSlides, 60000); // Alterna a cada 60 segundos
     }
 
     // Inicia a apresentação de slides
