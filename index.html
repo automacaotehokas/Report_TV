@@ -51,7 +51,7 @@
     <iframe id="report-iframe-2" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection1dc50c032a19a26803b4" allowFullScreen="true"></iframe>
 
     <!-- iframe especial (matriz) que precisa ser recarregado -->
-    <iframe id="report-iframe-dynamic" allowFullScreen="true"></iframe>
+    <iframe id="report-iframe-dynamic" style="display: none;" allowFullScreen="true"></iframe>
 
     <!-- Páginas rápidas que não precisam ser recarregadas -->
     <iframe id="report-iframe-3" src="https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSection9af8bc684709045ab008" allowFullScreen="true"></iframe>
@@ -61,6 +61,7 @@
 <script>
     var slideIndex = 0;
     var dynamicLink = "https://app.powerbi.com/view?r=eyJrIjoiY2U5OGVmZDItMjNiYy00ZThjLWIwNTktZjMwNzc5OGIwY2JkIiwidCI6IjZkOWMyYzg0LTRkMjQtNDc3MC04MWE5LTdjZjg0ZmEyNDMwZCJ9&pageName=ReportSectione3cd9c1c09aa9410039d";
+    var dynamicIframe = document.getElementById("report-iframe-dynamic");
 
     // Função para alternar entre os iframes pré-carregados (sem recarregar)
     function showSlides() {
@@ -73,7 +74,6 @@
 
         // Controlar se estamos na página especial que precisa recarregar
         if (slideIndex === 3) {
-            var dynamicIframe = document.getElementById("report-iframe-dynamic");
             dynamicIframe.src = dynamicLink;
             dynamicIframe.classList.add('active');
             setTimeout(showSlides, 50000); // Exibição especial: 50 segundos
@@ -101,6 +101,12 @@
             };
         });
     }
+
+    // Pré-carregar o iframe especial e iniciar as verificações
+    dynamicIframe.src = dynamicLink;
+    dynamicIframe.onload = function() {
+        console.log("Dynamic iframe carregado.");
+    };
 
     hideLoadingScreen();
 </script>
